@@ -11,6 +11,7 @@
                 'md:absolute md:w-full md:justify-center md:items-center md:flex',
             ]"
         >
+        <RouterLink to="/">
             <img
                 :class="[
                     'h-28 cursor-pointer py-3.5 px-6',
@@ -19,6 +20,7 @@
                 src="..\assets\img\LogoPrinceton.png"
                 alt="Logo"
             />
+        </RouterLink>
         </div>
         <span
             :class="[
@@ -38,13 +40,16 @@
         >
             <li
                 :class="[
-                    'my-6 hover:text-amber-100 text-xl',
+                    'my-5 text-xl  ',
                     'md:mx-6 md:my-0 md:text-lg',
                 ]"
                 v-for="(link, index) in Links"
                 :key="`navbar-link-${index}`"
             >
-                <a :href="link.link">{{ link.name }}</a>
+                <a 
+                id="navbar-link"
+                :class="['inline-block']"
+                :href="link.link">{{ link.name }}</a>
             </li>
         </ul>
     </div>
@@ -67,3 +72,22 @@ export default {
     },
 };
 </script>
+
+<style>
+#navbar-link::after{
+    content: '';
+    height: 2px;
+    width:0% ;
+    background-color: white;
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+#navbar-link:hover::after{
+    content: '';
+    height: 2px;
+    width:100% ;
+    background-color: white;
+    display: block;
+}
+</style>

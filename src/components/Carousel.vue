@@ -9,8 +9,7 @@
         <!-- Pagination -->
         <div
             :class="[
-                'texto',
-                'md:absolute md:flex md:top-1/2 md:left-11',
+                'md:absolute md:flex md:top-1/2 md:left-11 md:items-center',
                 'absolute flex bottom-1/3 left-5',
             ]"
         >
@@ -18,22 +17,30 @@
                 <h1
                     :class="[
                         index + 1 === currentSlide ? 'visible' : 'hidden',
-                        'text-2xl text-white font-bold cursor-pointer',
-                        'md:hover:text-[3.08rem] md:duration-1000 md:transition-all md:text-5xl md:drop-shadow-lg',
+                        'text-2xl text-white font-bold cursor-default',
+                        'md:text-5xl md:drop-shadow-lg md:text-left',
                     ]"
                 >
                     {{ texto[index].title }}
                 </h1>
                 <h3
                     :class="[
-                        'subtitle',
                         index + 1 === currentSlide ? 'visible' : 'hidden',
-                        'text-xl ml-1 font-semibold text-amber-100  mt-1.5',
+                        'text-xl ml-1 font-semibold text-amber-100  mt-1.5 cursor-default',
                         'md:text-2xl md:mt-4',
                     ]"
                 >
                     {{ texto[index].description }}
                 </h3>
+                <button
+                :class="[
+                        index + 1 === currentSlide ? 'visible' : 'hidden',
+                        'text-xm  mt-7 py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0',
+                        'md:text-center md:py-1.5 md:px-3 md:bg-transparent md:text-white md:font-semibold md:border md:border-white md:rounded md:hover:bg-gray-800 md:hover:text-white md:hover:border-transparent md:transition md:ease-in md:duration-500 md:transform md:hover:-translate-y-1 md:active:translate-y-0',
+                    ]"
+                >
+                <a href="/design">Read More</a> 
+                </button>
             </div>
         </div>
         <div
@@ -54,20 +61,13 @@
                     { active: index + 1 === currentSlide }
                 ]"
             />
-
-            <!-- <span
-                @click="goToSlide(index)"
-                v-for="(slide, index) in getSlideCount"
-                :key="index"
-                :class="{ active: index + 1 === currentSlide }"
-            >
-            </span> -->
         </div>
     </div>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
+import { RouterLink } from "vue-router";
 export default {
     props: ["startAutoPlay", "timeout", "navigation", "pagination"],
     setup(props) {
@@ -126,7 +126,7 @@ export default {
 
         const texto = [
             {
-                title: "Princeton Designers",
+                title: "Princeton Design",
                 description: "Rethinking the traditional approach",
             },
             {
@@ -167,6 +167,13 @@ h3 {
     animation-duration: 4s;
     animation-name: revelation;
 }
+
+button {
+    text-align: center;
+    animation-duration: 5s;
+    animation-name: revelation;
+}
+
 
 @keyframes slideInTitle {
     from {
