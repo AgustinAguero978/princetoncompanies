@@ -2,3 +2,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+/* BEGIN Light */
+@font-face {
+    font-family: 'Open Sans';
+    src: url("/public/fonts/OpenSans-Light.woff2") format("woff2"), url("/public/fonts/fonts/Light/OpenSans-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    }
+  /* END Light */
+
+  /* BEGIN Regular */
+@font-face {
+    font-family: 'Open Sans';
+    src: url("/public/fonts/OpenSans-Regular.woff2") format("woff2"), url("/public/fonts/OpenSans-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+  /* END Regular */
+
+  /* BEGIN Semibold */
+@font-face {
+    font-family: 'Open Sans';
+    src: url("/public/fonts/OpenSans-Semibold.woff2") format("woff2"), url("/public/fonts/OpenSans-Semibold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+}
+  /* END Semibold */
+
+  /* BEGIN Bold */
+@font-face {
+    font-family: 'Open Sans';
+    src: url("/public/fonts/OpenSans-Bold.woff2") format("woff2"), url("/public/fonts/fonts/OpenSans-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+  /* END Bold */
+}

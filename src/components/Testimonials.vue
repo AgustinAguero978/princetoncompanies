@@ -1,70 +1,74 @@
 <template>
     <section>
-        <div><h1 class="text-center text-4xl md:text-6xl mt-6 text-amber-500 font-bold">TESTIMONIALS</h1></div>
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 p-6 lg:px-36" v-motion-slide-visible-once-left>
+        <div>
+            <h1
+                class="font-custom font-bold text-center text-4xl md:text-6xl mt-6 text-dressblue"
+            >
+                {{ testimonialTitle }}
+            </h1>
+        </div>
+        <div
+            class="grid grid-cols-1 lg:grid-cols-4 gap-6 mt-10 p-6 lg:px-36"
+            v-motion-slide-visible-once-left
+        >
             <div
                 class="relative bg-indigo-900 text-white p-8 rounded-lg lg:col-span-2"
             >
                 <img
-                    src="src\assets\img\testimonialsImages\bg-pattern-quotation.svg"
+                    :src="testimonialBackgroundImage"
                     alt=""
                     class="absolute top-0 right-6 z-0 opacity-50"
                 />
                 <div class="relative z-10 flex justify-start space-x-4">
                     <img
-                        src="@/assets/img/testimonialsImages/image-daniel.jpg"
+                        :src="testimonialFirstImage"
                         alt=""
                         class="h-8 w-8 rounded-full border-2 border-purple-400"
                     />
                     <div>
-                        <h2 class="font-bold text-sm">Daniel Clifford</h2>
-                        <h3 class="text-xs opacity-50">Verified Graduate</h3>
+                        <h2 class="font-bold text-sm">
+                            {{ testimonialFirstName }}
+                        </h2>
+                        <h3 class="text-xs opacity-50">
+                            {{ testimonialFirstRole }}
+                        </h3>
                     </div>
                 </div>
                 <div>
                     <p
                         class="relative z-10 mt-4 font-bold text-xl leading-tight"
                     >
-                        I received a job offer mid-course, and the subjects I
-                        learned were current, if not more so, in the company I
-                        joined. I honestly feel I got every penny’s worth.
+                        {{ testimonialFirstTitle }}
                     </p>
                     <p class="mt-4 text-sm opacity-70">
-                        “ I was an EMT for many years before I joined the
-                        bootcamp. I’ve been looking to make a transition and
-                        have heard some people who had an amazing experience
-                        here. I signed up for the free intro course and found it
-                        incredibly fun! I enrolled shortly thereafter. The next
-                        12 weeks was the best - and most grueling - time of my
-                        life. Since completing the course, I’ve successfully
-                        switched careers, working as a Software Engineer at a VR
-                        startup. ”
+                        {{ testimonialFirstComment }}
                     </p>
                 </div>
             </div>
             <div class="relative bg-gray-600 text-white p-8 rounded-lg">
                 <div class="relative z-10 flex justify-start space-x-4">
                     <img
-                        src="@/assets/img/testimonialsImages/image-jonathan.jpg"
+                        :src="testimonialSecondImage"
                         alt=""
                         class="h-8 w-8 rounded-full"
                     />
                     <div>
-                        <h2 class="font-bold text-sm">Jonathan Walters</h2>
-                        <h3 class="text-xs opacity-50">Verified Graduate</h3>
+                        <h2 class="font-bold text-sm">
+                            {{ testimonialSecondName }}
+                        </h2>
+                        <h3 class="text-xs opacity-50">
+                            {{ testimonialSecondRole }}
+                        </h3>
                     </div>
                 </div>
                 <div>
                     <p
                         class="relative z-10 mt-4 font-bold text-xl leading-tight"
                     >
-                        The team was very supportive and kept me motivated
+                        {{ testimonialSecondTitle }}
                     </p>
                     <p class="mt-4 text-sm opacity-70">
-                        “ I started as a total newbie with virtually no coding
-                        skills. I now work as a mobile engineer for a big
-                        company. This was one of the best investments I’ve made
-                        in myself. ”
+                        {{ testimonialSecondComment }}
                     </p>
                 </div>
             </div>
@@ -73,25 +77,26 @@
             >
                 <div class="relative z-10 flex justify-start space-x-4">
                     <img
-                        src="@/assets/img/testimonialsImages/image-jeanette.jpg"
-                        alt=""
+                        :src="testimonialThirdImage"
                         class="h-8 w-8 rounded-full"
                     />
                     <div>
-                        <h2 class="font-bold text-sm">Jeanette Harmon</h2>
-                        <h3 class="text-xs opacity-50">Verified Graduate</h3>
+                        <h2 class="font-bold text-sm">
+                            {{ testimonialThirdName }}
+                        </h2>
+                        <h3 class="text-xs opacity-50">
+                            {{ testimonialThirdRole }}
+                        </h3>
                     </div>
                 </div>
                 <div>
                     <p
                         class="relative z-10 mt-4 font-bold text-xl leading-tight"
                     >
-                        An overall wonderful and rewarding experience
+                        {{ testimonialThirdTitle }}
                     </p>
                     <p class="mt-4 text-sm opacity-70">
-                        “ Thank you for the wonderful experience! I now have a
-                        job I really enjoy, and make a good living while doing
-                        something I love. ”
+                        {{ testimonialThirdComment }}
                     </p>
                 </div>
             </div>
@@ -100,31 +105,27 @@
             >
                 <div class="relative z-10 flex justify-start space-x-4">
                     <img
-                        src="@/assets/img/testimonialsImages/image-patrick.jpg"
+                        :src="testimonialFourthImage"
                         alt=""
                         class="h-8 w-8 rounded-full"
                     />
                     <div>
-                        <h2 class="font-bold text-sm">Patrick Abrams</h2>
-                        <h3 class="text-xs opacity-50">Verified Graduate</h3>
+                        <h2 class="font-bold text-sm">
+                            {{ testimonialFourthName }}
+                        </h2>
+                        <h3 class="text-xs opacity-50">
+                            {{ testimonialFourthRole }}
+                        </h3>
                     </div>
                 </div>
                 <div>
                     <p
                         class="relative z-10 mt-4 font-bold text-xl leading-tight"
                     >
-                        Awesome teaching support from TAs who did the bootcamp
-                        themselves. Getting guidance from them and learning from
-                        their experiences was easy.
+                        {{ testimonialFourthTitle }}
                     </p>
                     <p class="mt-4 text-sm opacity-70">
-                        “ The staff seem genuinely concerned about my progress
-                        which I find really refreshing. The program gave me the
-                        confidence necessary to be able to go out in the world
-                        and present myself as a capable junior developer. The
-                        standard is above the rest. You will get the personal
-                        attention you need from an incredible community of smart
-                        and amazing people. ”
+                        {{ testimonialFourthComment }}
                     </p>
                 </div>
             </div>
@@ -133,39 +134,155 @@
             >
                 <div class="relative z-10 flex justify-start space-x-4">
                     <img
-                        src="@/assets/img/testimonialsImages/image-kira.jpg"
+                        :src="testimonialFifthImage"
                         alt=""
                         class="h-8 w-8 rounded-full"
                     />
                     <div>
-                        <h2 class="font-bold text-sm">Kira Whittle</h2>
-                        <h3 class="text-xs opacity-50">Verified Graduate</h3>
+                        <h2 class="font-bold text-sm">
+                            {{ testimonialFifthName }}
+                        </h2>
+                        <h3 class="text-xs opacity-50">
+                            {{ testimonialFifthRole }}
+                        </h3>
                     </div>
                 </div>
                 <div>
                     <p
                         class="relative z-10 mt-4 font-bold text-xl leading-tight"
                     >
-                        Such a life-changing experience. Highly recommended!
+                        {{ testimonialFifthTitle }}
                     </p>
                     <p class="mt-4 text-sm opacity-70">
-                        “ Before joining the bootcamp, I’ve never written a line
-                        of code. I needed some structure from professionals who
-                        can help me learn programming step by step. I was
-                        encouraged to enroll by a former student of theirs who
-                        can only say wonderful things about the program. The
-                        entire curriculum and staff did not disappoint. They
-                        were very hands-on and I never had to wait long for
-                        assistance. The agile team project, in particular, was
-                        outstanding. It took my learning to the next level in a
-                        way that no tutorial could ever have. In fact, I’ve
-                        often referred to it during interviews as an example of
-                        my developent experience. It certainly helped me land a
-                        job as a full-stack developer after receiving multiple
-                        offers. 100% recommend! ”
+                        {{ testimonialFifthComment }}
                     </p>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    props: {
+        testimonialTitle: {
+            type: String,
+            default: "Title",
+        },
+
+        /* First Testimony */
+        testimonialBackgroundImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialFirstImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialFirstName: {
+            type: String,
+            default: "Testimonial FirstName",
+        },
+        testimonialFirstRole: {
+            type: String,
+            default: "Testimonial FirstRole",
+        },
+        testimonialFirstTitle: {
+            type: String,
+            default: "Testimonial FirstTitle",
+        },
+        testimonialFirstComment: {
+            type: String,
+            default: "Testimonial FirstComment",
+        },
+
+        /* Second Testimony */
+        testimonialSecondImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialSecondName: {
+            type: String,
+            default: "Testimonial SecondName",
+        },
+        testimonialSecondRole: {
+            type: String,
+            default: "Testimonial SecondRole",
+        },
+        testimonialSecondTitle: {
+            type: String,
+            default: "Testimonial SecondTitle",
+        },
+        testimonialSecondComment: {
+            type: String,
+            default: "Testimonial SecondComment",
+        },
+
+        /* Third Testimony */
+        testimonialThirdImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialThirdName: {
+            type: String,
+            default: "Testimonial ThirdName",
+        },
+        testimonialThirdRole: {
+            type: String,
+            default: "Testimonial ThirdRole",
+        },
+        testimonialThirdTitle: {
+            type: String,
+            default: "Testimonial ThirdTitle",
+        },
+        testimonialThirdComment: {
+            type: String,
+            default: "Testimonial ThirdComment",
+        },
+
+        /* Fourth Testimony */
+        testimonialFourthImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialFourthName: {
+            type: String,
+            default: "Testimonial FourthName",
+        },
+        testimonialFourthRole: {
+            type: String,
+            default: "Testimonial FourthRole",
+        },
+        testimonialFourthTitle: {
+            type: String,
+            default: "Testimonial FourthTitle",
+        },
+        testimonialFourthComment: {
+            type: String,
+            default: "TestimonialFourth Comment",
+        },
+
+        /* Fifth Testimony */
+        testimonialFifthImage: {
+            type: String,
+            default: "src/assets/img/BrokenImageRoute.png",
+        },
+        testimonialFifthName: {
+            type: String,
+            default: "Testimonial FifthName",
+        },
+        testimonialFifthRole: {
+            type: String,
+            default: "Testimonial FifthRole",
+        },
+        testimonialFifthTitle: {
+            type: String,
+            default: "Testimonial FifthTitle",
+        },
+        testimonialFifthComment: {
+            type: String,
+            default: "Testimonial FifthComment",
+        },
+    },
+};
+</script>

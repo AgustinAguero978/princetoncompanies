@@ -27,7 +27,7 @@
                             'min-w-full h-full object-cover',
                             'md:min-w-full md:h-full md:object-cover',
                         ]"
-                        :src="`src/assets/img/sliderCarouselImage/${slide}.jpg`"
+                        :src="`src/assets/img/Home/sliderCarouselImage/${slide}.jpg`"
                         alt=""
                     />
                 </div>

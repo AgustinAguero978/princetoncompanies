@@ -1,7 +1,7 @@
 <template>
     <div
         :class="[
-            'absolute w-full bg-gray-900 text-gray-100  shadow-mg hover:shadow-lg z-40 h-32',
+            'absolute w-full bg-dressblue text-gray-100  shadow-mg hover:shadow-lg z-40 h-32',
             'md:flex md:h-32 md:z-40 md:justify-end md:w-full md:absolute md:hover:shadow-lg md:shadow-mg',
         ]"
     >
@@ -14,10 +14,10 @@
         <RouterLink to="/">
             <img
                 :class="[
-                    'h-28 cursor-pointer py-3.5 px-6',
-                    'md:h-32 md:cursor-pointer md:py-3.5 md:px-6',
+                    'cursor-pointer py-3.5',
+                    'md:cursor-pointer md:py-3.5 md:px-6',
                 ]"
-                src="..\assets\img\LogoPrinceton.png"
+                src="..\assets\img\Home\newlogos\tpc.png"
                 alt="Logo"
             />
         </RouterLink>
@@ -25,7 +25,7 @@
         <span
             :class="[
                 'md:hidden',
-                'absolute right-6 top-1.5 cursor-pointer text-4xl ',
+                'absolute right-3 top-1.5 cursor-pointer text-4xl ',
             ]"
             @click="MenuOpen()"
         >
@@ -33,15 +33,15 @@
         </span>
         <ul
             :class="[
-                'absolute w-full h-32 px-10 duration-700 ease-in bg-gray-900 top-[127px] z-40',
+                'absolute w-full h-32 px-10 duration-700 ease-in bg-dressblue top-[127px] z-40',
                 'md:flex md:items-center md:px-6 md:pb-0 pb-10 md:static md:w-auto',
                 open ? 'left-0' : 'left-[-100%]',
             ]"
         >
             <li
                 :class="[
-                    'my-5 text-xl  ',
-                    'md:mx-6 md:my-0 md:text-lg',
+                    'my-5 text-xl font-custom font-semibold',
+                    'md:mx-6 md:my-0 md:text-xl 4xl:text-2xl',
                 ]"
                 v-for="(link, index) in Links"
                 :key="`navbar-link-${index}`"
@@ -62,8 +62,8 @@ export default {
     setup() {
         let open = ref(false);
         let Links = [
-            { name: "About Us", link: "#" },
-            { name: "Contact", link: "#" },
+            { name: "About Us", link: "/about" },
+            { name: "Contact Us", link: "/contact" },
         ];
         function MenuOpen() {
             open.value = !open.value;

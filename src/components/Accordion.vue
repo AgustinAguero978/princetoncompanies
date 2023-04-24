@@ -1,244 +1,237 @@
 <template>
     <div
         :class="[
-            'absolute flex items-end w-full h-4/6 top-60 p-0.5',
-            'md:h-4/6 md:top-72 md:p-4',
-            'lg:top-52 lg:h-96 lg:p-1 lg:mt-2',
-            'xl:top-64 xl:h-4/6 xl:p-1',
-            '3xl:top-72 3xl:h-4/6 3xl:p-1 3xl:mt-3',
-            '4xl:top-96 4xl:h-4/6 4xl:p-1',
+            'absolute flex items-end w-full h-[68%] top-72 p-0.5 text-white',
+            'xl:top-64 xl:h-4/6 xl:p-1 xl:mt-2',
+            '3xl:top-72 3xl:mt-3',
+            '4xl:top-96',
         ]"
     >
         <div
-            class="bg-[url('src/assets/img/accordionImage/Image-1.jpg')] bg-cover bg-center bg-no-repeat"
+            :style="{
+                backgroundImage:
+                    active === 1
+                        ? `linear-gradient(to right, rgba(17,24,39,0.3) 0%, rgba(17,24,39,0.3) 100%), url('${firstImage}')`
+                        : `url('${firstImage}')`,
+            }"
             :class="[
                 'panel',
+                'bg-cover bg-center bg-no-repeat',
                 { active: active == 1 },
-                'text-white ',
-                'relative basis-1/6 h-full cursor-pointer rounded-2xl m-0.5 overflow-hidden transition-all easy-in duration-700',
-                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:rounded-2xl md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
+                'relative basis-1/6 h-full cursor-pointer  m-0.5 overflow-hidden transition-all easy-in duration-700',
+                'md:relative md:basis-1/6 md:h-full md:w-full md:cursor-pointer  md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700  ',
             ]"
             @click="active = 1"
         >
             <div
                 :class="[
-                    'absolute top-20 w-full text-center',
-                    'lg:text-left lg:left-10 lg:top-12',
-                    'xl:text-left xl:left-16 xl:top-20',
-                    '3xl:text-left 3xl:left-10 3xl:top-24',
-                    '4xl:text-left 4xl:left-14 4xl:top-48',
+                    'absolute top-28 w-full text-center font-custom font-semibold flex flex-col justify-center',
+                    '4xl:top-80 3xl:top-60',
                 ]"
             >
                 <h2
                     :class="[
                         'text-4xl opacity-0',
-                        'md:top-32 md:text-6xl md:left-10',
-                        'lg:text-5xl',
-                        'xl:text-6xl',
-                        '3xl:text-7xl ',
-                        '4xl:text-8xl',
+                        'md:text-6xl md:left-10',
+                        '4xl:text-7xl',
                     ]"
+                    style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)"
                 >
-                    Explore
+                    {{ accordionTitleFirstPanel }}
                 </h2>
             </div>
             <h3
+                class="absolute my-20 text-center opacity-0 top-28 left-2 font-custom mt-28"
                 :class="[
-                    'absolute my-20 text-left opacity-0 top-20 text-base left-3',
-                    'md:top-44 md:text-1xl md:left-10 md:w-10/12 ',
-                    'lg:top-20 lg:text-lg lg:left-10 lg:w-10/12',
-                    'xl:top-28 xl:text-xl xl:left-16 xl:w-10/12',
-                    '3xl:top-44 3xl:text-1xl 3xl:left-10',
-                    '4xl:top-72 4xl:text-3xl 4xl:left-14',
+                    'md:top-44 md:text-xl md:left-16 md:w-10/12 md:text-left',
+                    'xl:top-28',
+                    '3xl:top-56 3xl:text-2xl 3xl:left-28',
+                    '4xl:top-80 4xl:text-4xl',
                 ]"
+                style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)"
             >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br /><br />
-                Deserunt aperiam nihil, recusandae atque culpa commodi placeat
-                unde repellat
+                {{ accordionDescriptionFirstPanel }}
             </h3>
-            <div :class="['absolute w-full text-center bottom-10']">
+            <div :class="['absolute w-full text-center bottom-24']">
                 <button
                     :class="[
-                        'text-xm  py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-800 transform hover:-translate-y-1 active:translate-y-0 opacity-0',
-                        '',
+                        'text-xm py-1 px-2 md:py-1 3xl:py-1.5 border-[2.5px] text-white font-custom rounded-lg ',
+                        'hover:bg-white hover:text-dressblue hover:border-transparent hover:-translate-y-0.5 transition ease-in duration-200 opacity-0',
+                        '3xl:text-xl 4xl:text-3xl',
                     ]"
                 >
-                    Read More
+                    <a :href="accordionRouteFirstPanel">Read More</a>
                 </button>
             </div>
         </div>
         <div
-            class="bg-[url('src/assets/img/accordionImage/Image-2.jpg')] bg-cover bg-center bg-no-repeat"
+            :style="{
+                backgroundImage:
+                    active === 2
+                        ? `linear-gradient(to right, rgba(17,24,39,0.3) 0%, rgba(17,24,39,0.3) 100%), url('${secondImage}')`
+                        : `url('${secondImage}')`,
+            }"
             :class="[
                 'panel',
-                'text-white',
+                'bg-cover bg-center bg-no-repeat',
                 { active: active == 2 },
-                'relative basis-1/6 h-full cursor-pointer rounded-2xl m-0.5 overflow-hidden transition-all easy-in duration-700',
-                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:rounded-2xl md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
+                'relative basis-1/6 h-full cursor-pointer  m-0.5 overflow-hidden transition-all easy-in duration-700',
+                'md:relative md:basis-1/6 md:h-full md:cursor-pointer  md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
             ]"
             @click="active = 2"
         >
             <div
                 :class="[
-                    'absolute top-20 w-full text-center',
-                    'lg:text-left lg:left-10 lg:top-12',
-                    'xl:text-left xl:left-16 xl:top-20',
-                    '3xl:text-left 3xl:left-10 3xl:top-24',
-                    '4xl:text-left 4xl:left-14 4xl:top-48',
+                    'absolute top-28 w-full text-center font-custom font-semibold flex flex-col justify-center',
+                    '4xl:top-80 3xl:top-60',
                 ]"
             >
                 <h2
                     :class="[
                         'text-4xl opacity-0',
-                        'md:top-32 md:text-6xl md:left-10',
-                        'lg:text-5xl',
-                        'xl:text-6xl',
-                        '3xl:text-7xl ',
-                        '4xl:text-8xl',
+                        'md:text-6xl md:left-10',
+                        '4xl:text-7xl',
                     ]"
+                    style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)"
                 >
-                    Wild Forest
+                    {{ accordionTitleSecondPanel }}
                 </h2>
             </div>
             <h3
+                class="absolute my-20 text-center opacity-0 top-28 left-2 font-custom mt-28"
                 :class="[
-                    'absolute my-20 text-left opacity-0 top-20 text-base left-3',
-                    'md:top-44 md:text-1xl md:left-10 md:w-10/12 ',
-                    'lg:top-20 lg:text-lg lg:left-10 lg:w-10/12',
-                    'xl:top-28 xl:text-xl xl:left-16',
-                    '3xl:top-44 3xl:text-1xl 3xl:left-10',
-                    '4xl:top-72 4xl:text-3xl 4xl:left-14',
+                    'md:top-44 md:text-xl md:left-16 md:w-10/12 md:text-left',
+                    'xl:top-28',
+                    '3xl:top-56 3xl:text-2xl 3xl:left-28',
+                    '4xl:top-80 4xl:text-4xl',
                 ]"
+                style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)"
             >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br /><br />
-                Deserunt aperiam nihil, recusandae atque culpa commodi placeat
-                unde repellat
+                {{ accordionDescriptionSecondPanel }}
             </h3>
-            <div :class="['absolute w-full text-center bottom-10']">
+            <div :class="['absolute w-full text-center bottom-24']">
                 <button
                     :class="[
-                        'text-xm  py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 opacity-0',
-                        '',
+                        'text-xm py-1 px-2 md:py-1 3xl:py-1.5 border-[2.5px] text-white font-custom rounded-lg ',
+                        'hover:bg-white hover:text-dressblue hover:border-transparent hover:-translate-y-0.5 transition ease-in duration-200 opacity-0',
+                        '3xl:text-xl 4xl:text-3xl',
                     ]"
-                    
                 >
-                <a href="/project"> Read More</a>
+                    <a :href="accordionRouteSecondPanel"> Read More</a>
                 </button>
             </div>
         </div>
         <div
-            class="bg-[url('src/assets/img/accordionImage/Image-3.jpg')] bg-cover bg-center bg-no-repeat"
+            :style="{
+                backgroundImage:
+                    active === 3
+                        ? `linear-gradient(to right, rgba(17,24,39,0.3) 0%, rgba(17,24,39,0.3) 100%), url('${thirdImage}')`
+                        : `url('${thirdImage}')`,
+            }"
             :class="[
                 'panel',
-                'text-white',
+                'bg-cover bg-center bg-no-repeat',
                 { active: active == 3 },
-                'relative basis-1/6 h-full cursor-pointer rounded-2xl m-0.5 overflow-hidden transition-all easy-in duration-700',
-                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:rounded-2xl md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
+                'relative basis-1/6 h-full cursor-pointer  m-0.5 overflow-hidden transition-all easy-in duration-700',
+                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
             ]"
             @click="active = 3"
         >
             <div
                 :class="[
-                    'absolute top-20 w-full text-center',
-                    'lg:text-left lg:left-10 lg:top-12',
-                    'xl:text-left xl:left-16 xl:top-20',
-                    '3xl:text-left 3xl:left-10 3xl:top-24',
-                    '4xl:text-left 4xl:left-14 4xl:top-48',
+                    'absolute top-28 w-full text-center font-custom font-semibold flex flex-col justify-center',
+                    '4xl:top-80 3xl:top-60',
                 ]"
             >
                 <h2
                     :class="[
                         'text-4xl opacity-0',
-                        'md:top-32 md:text-6xl md:left-10',
-                        'lg:text-5xl',
-                        'xl:text-6xl',
-                        '3xl:text-7xl ',
-                        '4xl:text-8xl',
+                        'md:text-6xl md:left-10',
+                        '4xl:text-7xl',
                     ]"
+                    style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)"
                 >
-                    Night
+                    {{ accordionTitleThirdPanel }}
                 </h2>
             </div>
             <h3
+                class="absolute my-20 text-center opacity-0 top-28 left-2 font-custom mt-28"
                 :class="[
-                    'absolute my-20 text-left opacity-0 top-20 text-base left-3',
-                    'md:top-44 md:text-1xl md:left-10 md:w-10/12 ',
-                    'lg:top-20 lg:text-lg lg:left-10 lg:w-10/12',
-                    'xl:top-28 xl:text-xl xl:left-16',
-                    '3xl:top-44 3xl:text-1xl 3xl:left-10',
-                    '4xl:top-72 4xl:text-3xl 4xl:left-14',
+                    'md:top-44 md:text-xl md:left-16 md:w-10/12 md:text-left',
+                    'xl:top-28',
+                    '3xl:top-56 3xl:text-2xl 3xl:left-28',
+                    '4xl:top-80 4xl:text-4xl',
                 ]"
+                style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)"
             >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br /><br />
-                Deserunt aperiam nihil, recusandae atque culpa commodi placeat
-                unde repellat
+                {{ accordionDescriptionThirdPanel }}
             </h3>
-            <div :class="['absolute w-full text-center bottom-10']">
+            <div :class="['absolute w-full text-center bottom-24']">
                 <button
                     :class="[
-                        'text-xm  py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 opacity-0',
-                        '',
+                        'text-xm py-1 px-2 md:py-1 3xl:py-1.5 border-[2.5px] text-white font-custom rounded-lg ',
+                        'hover:bg-white hover:text-dressblue hover:border-transparent hover:-translate-y-0.5 transition ease-in duration-200 opacity-0',
+                        '3xl:text-xl 4xl:text-3xl',
                     ]"
                 >
-                    Read More
+                    <a :href="accordionRouteThirdPanel">Read More</a>
                 </button>
             </div>
         </div>
         <div
-            class="bg-[url('src/assets/img/accordionImage/Image-4.jpg')] bg-cover bg-center bg-no-repeat"
+            :style="{
+                backgroundImage:
+                    active === 4
+                        ? `linear-gradient(to right, rgba(17,24,39,0.3) 0%, rgba(17,24,39,0.3) 100%), url('${fourthImage}')`
+                        : `url('${fourthImage}')`,
+            }"
             :class="[
                 'panel',
-                'text-white',
+                'bg-cover bg-center bg-no-repeat',
                 { active: active == 4 },
-                'relative basis-1/6 h-full cursor-pointer rounded-2xl m-0.5 overflow-hidden transition-all easy-in duration-700',
-                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:rounded-2xl md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
+                'relative basis-1/6 h-full cursor-pointer m-0.5 overflow-hidden transition-all easy-in duration-700',
+                'md:relative md:basis-1/6 md:h-full md:cursor-pointer md:m-0.5 md:overflow-hidden md:transition-all md:easy-in md:duration-700 ',
             ]"
             @click="active = 4"
         >
             <div
                 :class="[
-                    'absolute top-20 w-full text-center',
-                    'lg:text-left lg:left-10 lg:top-12',
-                    'xl:text-left xl:left-16 xl:top-20',
-                    '3xl:text-left 3xl:left-10 3xl:top-24',
-                    '4xl:text-left 4xl:left-14 4xl:top-48',
+                    'absolute top-28 w-full text-center font-custom font-semibold flex flex-col justify-center',
+                    '4xl:top-80 3xl:top-60',
                 ]"
             >
                 <h2
                     :class="[
                         'text-4xl opacity-0',
-                        'md:top-32 md:text-6xl md:left-10',
-                        'lg:text-5xl',
-                        'xl:text-6xl',
-                        '3xl:text-7xl ',
-                        '4xl:text-8xl',
+                        'md:text-6xl md:left-10',
+                        '4xl:text-7xl',
                     ]"
+                    style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)"
                 >
-                    Summer
+                    {{ accordionTitleFourthPanel }}
                 </h2>
             </div>
             <h3
+                class="absolute my-20 text-center opacity-0 top-28 left-2 font-custom mt-28"
                 :class="[
-                    'absolute my-20 text-left opacity-0 top-20 text-base left-3',
-                    'md:top-44 md:text-1xl md:left-10 md:w-10/12 ',
-                    'lg:top-20 lg:text-lg lg:left-10 lg:w-10/12',
-                    'xl:top-28 xl:text-xl xl:left-16',
-                    '3xl:top-44 3xl:text-1xl 3xl:left-10',
-                    '4xl:top-72 4xl:text-3xl 4xl:left-14',
+                    'md:top-44 md:text-xl md:left-16 md:w-10/12 md:text-left',
+                    'xl:top-28',
+                    '3xl:top-56 3xl:text-2xl 3xl:left-28',
+                    '4xl:top-80 4xl:text-4xl',
                 ]"
+                style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)"
             >
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br /><br />
-                Deserunt aperiam nihil, recusandae atque culpa commodi placeat
-                unde repellat
+                {{ accordionDescriptionFourthPanel }}
             </h3>
-            <div :class="['absolute w-full text-center bottom-10']">
+            <div :class="['absolute w-full text-center bottom-24']">
                 <button
                     :class="[
-                        'text-xm  py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0 opacity-0',
-                        '',
+                        'text-xm py-1 px-2 md:py-1 3xl:py-1.5 border-[2.5px] text-white font-custom rounded-lg ',
+                        'hover:bg-white hover:text-dressblue hover:border-transparent hover:-translate-y-0.5 transition ease-in duration-200 opacity-0',
+                        '3xl:text-xl 4xl:text-3xl',
                     ]"
                 >
-                    Read More
+                    <a :href="accordionRouteFourthPanel">Read More</a>
                 </button>
             </div>
         </div>
@@ -247,10 +240,81 @@
 
 <script>
 export default {
+    name: "Accordion",
     data() {
         return {
             active: 1,
         };
+    },
+
+    props: {
+        firstImage: {
+            type: String,
+            required: true,
+        },
+        accordionTitleFirstPanel: {
+            type: String,
+            default: "Title First Panel",
+        },
+        accordionDescriptionFirstPanel: {
+            type: String,
+            default: "Description First Panel",
+        },
+        accordionRouteFirstPanel: {
+            type: String,
+            required: true,
+        },
+
+        secondImage: {
+            type: String,
+            required: true,
+        },
+        accordionTitleSecondPanel: {
+            type: String,
+            default: "Title Second Panel",
+        },
+        accordionDescriptionSecondPanel: {
+            type: String,
+            default: "Description Second Panel",
+        },
+        accordionRouteSecondPanel: {
+            type: String,
+            required: true,
+        },
+
+        thirdImage: {
+            type: String,
+            required: true,
+        },
+        accordionTitleThirdPanel: {
+            type: String,
+            default: "Title Third Panel",
+        },
+        accordionDescriptionThirdPanel: {
+            type: String,
+            default: "Description Third Panel",
+        },
+        accordionRouteThirdPanel: {
+            type: String,
+            required: true,
+        },
+
+        fourthImage: {
+            type: String,
+            required: true,
+        },
+        accordionTitleFourthPanel: {
+            type: String,
+            default: "Title Fourth Panel",
+        },
+        accordionDescriptionFourthPanel: {
+            type: String,
+            default: "Description Fourth Panel",
+        },
+        accordionRouteFourthPanel: {
+            type: String,
+            required: true,
+        },
     },
 };
 </script>

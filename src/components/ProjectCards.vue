@@ -1,89 +1,64 @@
 <template>
-    <section class="mt-10">
-        <h1
-            class="text-center md:pl-10 text-3xl md:text-6xl mt-6 text-slate-900 font-bold mb-10"
-        >
-            OTHER DESIGNS PROJECTS
-        </h1>
+    <section class="mt-0 lg:mt-10">
+        <div class="text-center">
+            <h1
+                class="md:pl-10 text-3xl md:text-6xl text-dressblue font-custom font-bold mt-10 mb-20"
+            >
+                Our other design projects you don't want to miss!
+            </h1>
+        </div>
         <div
-            class="flex items-center justify-center min-h screen mx-auto" v-motion-slide-visible-once-right
+            class="flex items-center justify-center mx-auto"
+            v-motion:slide-visible-once-right
         >
             <!--GRID-->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 4xl:w-[1920px] 3xl:w-[1600px]">
+            <div
+                class="grid grid-cols-1 mt-3 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 4xl:w-[1920px] 3xl:w-[1600px]"
+            >
                 <!--CARD-->
-                <div class="rounded-xl shadow-lg">
-                    <div class="p-5 flex flex-col">
+                <div
+                    class="bg-white rounded-xl shadow-lg"
+                    v-for="(project, index) in projects"
+                    :key="index"
+                >
+                    <div class="p-5 flex flex-col h-full">
                         <div class="rounded-xl overflow-hidden">
-                            <img
-                                src="src\assets\img\accordionImage\Image-4.jpg"
-                                alt=""
-                            />
+                            <img :src="project.imageUrl" />
                         </div>
-                        <h5 class="text-2xl md:text-3xl font-medium mt-3">
-                            Summer
-                        </h5>
-                        <p class="text-slate-500 text-lg mt-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Neque eos natus, cupiditate deserunt rem vitae
-                            mollitia quod qui ad deleniti! Tempora numquam quae
-                            iure maiores velit! Fugit veniam dolores harum.
-                        </p>
-                        <a
-                            href="#"
-                            class="3xl:w-1/4 3xl:mt-6 text-center bg-blue-400 text-blue-700 py-2 rounded-lg font-semibold mt-4 hover:bg-blue-300 focus:scale-95 transition-all duration-200 ease-out"
-                            >Read More</a
+                        <h5
+                            class="text-spacegrey text-4xl md:text-4xl font-custom font-bold mt-5 text-center"
                         >
-                    </div>
-                </div>
-                <div class="rounded-xl shadow-lg">
-                    <div class="p-5 flex flex-col">
-                        <div class="rounded-xl overflow-hidden">
-                            <img
-                                src="src\assets\img\accordionImage\Image-3.jpg"
-                                alt=""
-                            />
+                            {{ project.title }}
+                        </h5>
+                        <p class="text-spacegrey text-xl mt-4 font-custom text-justify px-12">
+                            {{ project.description }}
+                        </p>
+                        <div
+                            class=" justify-center w-full mt-auto flex items-center"
+                        >
+                            <router-link
+                                :to="project.route"
+                                class="inline-block 2xl:w-1/4 3xl:mt-6 text-center text-2xl bg-dressblue text-white py-2 rounded-lg font-custom font-semibold mt-4 hover:bg-azuretide focus:scale-95 transition-all duration-200 ease-out w-full"
+                            >
+                                Read More
+                            </router-link>
                         </div>
-                        <h5 class="text-2xl md:text-3xl font-medium mt-3">
-                            Night
-                        </h5>
-                        <p class="text-slate-500 text-lg mt-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Neque eos natus, cupiditate deserunt rem vitae
-                            mollitia quod qui ad deleniti! Tempora numquam quae
-                            iure maiores velit! Fugit veniam dolores harum.
-                        </p>
-                        <a
-                            href="#"
-                            class="3xl:w-1/4 3xl:mt-6 text-center bg-blue-400 text-blue-700 py-2 rounded-lg font-semibold mt-4 hover:bg-blue-300 focus:scale-95 transition-all duration-200 ease-out"
-                            >Read More</a
-                        >
-                    </div>
-                </div>
-                <div class="rounded-xl shadow-lg ">
-                    <div class="p-5 flex flex-col ">
-                        <div class="rounded-xl overflow-hidden">
-                            <img
-                                src="src\assets\img\accordionImage\Image-1.jpg"
-                                alt=""
-                            />
-                        </div>
-                        <h5 class="text-2xl md:text-3xl font-medium mt-3">
-                            Explore
-                        </h5>
-                        <p class="text-slate-500 text-lg mt-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Neque eos natus, cupiditate deserunt rem vitae
-                            mollitia quod qui ad deleniti! Tempora numquam quae
-                            iure maiores velit! Fugit veniam dolores harum.
-                        </p>
-                        <a
-                            href="#"
-                            class="3xl:w-1/4 3xl:mt-6 text-center bg-blue-400 text-blue-700 py-2 rounded-lg font-semibold mt-4 hover:bg-blue-300 focus:scale-95 transition-all duration-200 ease-out"
-                            >Read More</a
-                        >
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+
+<script>
+export default {
+    name: "ProjectCards",
+    props: {
+        projects: {
+            type: Array,
+            required: true,
+        },
+    },
+};
+</script>

@@ -2,65 +2,86 @@
     <div
         :class="[
             'relative h-screen w-screen',
-            'md:relative md:h-screen md:w-screen',
         ]"
     >
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-30 z-10"></div>
         <slot :currentSlide="currentSlide" />
         <!-- Pagination -->
         <div
             :class="[
-                'md:absolute md:flex md:top-1/2 md:left-11 md:items-center',
-                'absolute flex bottom-1/3 left-5',
+                'absolute flex bottom-1/3 left-5 items-center z-20 top-1/2',
+                'md:top-1/2 md:left-11',
             ]"
         >
             <div v-for="(slide, index) in getSlideCount" :key="index">
                 <h1
                     :class="[
                         index + 1 === currentSlide ? 'visible' : 'hidden',
-                        'text-2xl text-white font-bold cursor-default',
-                        'md:text-5xl md:drop-shadow-lg md:text-left',
+                        'text-2xl text-white text-left font-custom font-bold cursor-default select-none',
+                        'md:text-5xl',
+                        '4xl:text-7xl',
                     ]"
+                    style="text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5)"
                 >
                     {{ texto[index].title }}
                 </h1>
                 <h3
                     :class="[
                         index + 1 === currentSlide ? 'visible' : 'hidden',
-                        'text-xl ml-1 font-semibold text-amber-100  mt-1.5 cursor-default',
-                        'md:text-2xl md:mt-4',
+                        'text-xl ml-1 font-custom text-slate-50  mt-1.5 cursor-default select-none',
+                        'md:text-3xl md:my-4',
+                        '4xl:text-5xl',
                     ]"
+                    style="text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5)"
                 >
                     {{ texto[index].description }}
                 </h3>
                 <button
-                :class="[
+                    :class="[
                         index + 1 === currentSlide ? 'visible' : 'hidden',
-                        'text-xm  mt-7 py-1 px-2 bg-transparent text-white font-semibold border border-white rounded hover:bg-gray-800 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0',
-                        'md:text-center md:py-1.5 md:px-3 md:bg-transparent md:text-white md:font-semibold md:border md:border-white md:rounded md:hover:bg-gray-800 md:hover:text-white md:hover:border-transparent md:transition md:ease-in md:duration-500 md:transform md:hover:-translate-y-1 md:active:translate-y-0',
+                        'hover:bg-white hover:text-dressblue hover:border-transparent hover:-translate-y-1',
+                        'text-white text-xm mt-4 py-1 px-1.5 text-center font-custom border-[2.5px] rounded-lg  transition ease-in duration-200 transform active:translate-y-0',
+                        'md:py-0.7 md:px-1 md:text-xl',
+                        '4xl:text-3xl 4xl:py-1.5 4xl:px-2',
                     ]"
                 >
-                <a href="/design">Read More</a> 
+                    <a
+                        :href="
+                            currentSlide === 1
+                                ? '/visualization'
+                                : currentSlide === 2
+                                ? '/design'
+                                : currentSlide === 3
+                                ? '/builder'
+                                : '/development'
+                        "
+                        >View More</a
+                    >
                 </button>
             </div>
         </div>
         <div
+            v-if="paginationEnabled"
             :class="[
-                'absolute flex w-full justify-center items-center bottom-10 gap-8 cursor-pointer',
-                'md:absolute md:flex md:w-full md:justify-center md:items-center md:bottom-14 md:gap-32 md:cursor-pointer',
+                'absolute font-custom font-semibold text-xm text-white flex justify-center text-center items-center gap-1 bottom-10 cursor-pointer select-none w-full z-20',
+                'md:text-2xl md:bottom-5 md:gap-10',
+                '4xl:text-4xl',
             ]"
-            v-if="pagintationEnabled"
         >
-            <img
-                :src="logos[index]"
+            <span
+                id="company"
                 @click="goToSlide(index)"
-                v-for="(slide, index) in getSlideCount"
+                v-for="(company, index) in companies"
                 :key="index"
-                :class="[
-                    'h-16 w-14',
-                    'md:hover:scale-125 md:transition-all md:duration-500 md:h-20 md:w-16',
-                    { active: index + 1 === currentSlide }
-                ]"
-            />
+                class="p-1 4xl:p-2"
+                :class="{
+                    active: company === currentCompany,
+                    'company-active': index + 1 === currentSlide,
+                    
+                }"
+            >
+                {{ company }}
+            </span>
         </div>
     </div>
 </template>
@@ -71,7 +92,7 @@ import { RouterLink } from "vue-router";
 export default {
     props: ["startAutoPlay", "timeout", "navigation", "pagination"],
     setup(props) {
-        const currentSlide = ref(1);
+        const currentSlide = ref(2);
         const getSlideCount = ref(null);
         const autoPlayEnabled = ref(
             props.startAutoPlay === undefined ? true : props.startAutoPlay
@@ -79,7 +100,8 @@ export default {
         const timeoutDuration = ref(
             props.timeout === undefined ? 5000 : props.timeout
         );
-        const pagintationEnabled = ref(
+        const paginationEnabled = ref(
+            // corrected spelling
             props.pagination === undefined ? true : props.pagination
         );
         const navEnabled = ref(
@@ -117,29 +139,24 @@ export default {
             getSlideCount.value = document.querySelectorAll(".slide").length;
         });
 
-        const logos = [
-            "src/assets/img/Companies/design.png",
-            "src/assets/img/Companies/build.png",
-            "src/assets/img/Companies/development.png",
-            "src/assets/img/Companies/visualization.png",
-        ];
+        const companies = ["VISUALIZATION", "DESIGN", "BUILD", "DEVELOPMENT"];
 
         const texto = [
             {
-                title: "Princeton Design",
+                title: "PRINCETON VISUALIZATION",
+                description: "Designing the future",
+            },
+            {
+                title: "PRINCETON DESIGN",
                 description: "Rethinking the traditional approach",
             },
             {
-                title: "Princeton Builders",
+                title: "PRINCETON BUILDERS",
                 description: "Coordination and management",
             },
             {
-                title: "Princeton Development",
+                title: "PRINCETON DEVELOPMENT",
                 description: "Assisting clients and investors",
-            },
-            {
-                title: "Princeton Visualization",
-                description: "Designing the future",
             },
         ];
         return {
@@ -148,9 +165,9 @@ export default {
             prevSlide,
             getSlideCount,
             goToSlide,
-            pagintationEnabled,
+            paginationEnabled, // corrected spelling
             navEnabled,
-            logos,
+            companies,
             texto,
         };
     },
@@ -164,20 +181,19 @@ h1 {
 }
 
 h3 {
-    animation-duration: 4s;
+    animation-duration: 2.5s;
     animation-name: revelation;
 }
 
 button {
     text-align: center;
-    animation-duration: 5s;
+    animation-duration: 1.5s;
     animation-name: revelation;
 }
 
-
 @keyframes slideInTitle {
     from {
-        transform: translateX(-250px);
+        transform: translateX(-111%);
     }
     to {
         transform: translateX(0);
@@ -193,8 +209,33 @@ button {
     }
 }
 
-.active{
-    transform: scale(1.2);
-    transition-duration: 2s;
+#company::after {
+    content: "";
+    height: 2px;
+    width: 0%;
+    background-color: white;
+    display: block;
+    transition: 0.5s ease-in-out;
 }
+
+#company:hover::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    display: block;
+}
+
+/* .company-active {
+    background-color: rgba(126, 125, 125, 0.5);
+    background-color: transparent;
+    backdrop-filter: blur(250px);
+    border-radius: 4px;
+} */
+
+.company-active {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
 </style>
